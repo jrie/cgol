@@ -1,6 +1,25 @@
 # cgol
 A Conway game of life simulator
 
+## Compilation
+Requirements for compilation are "gcc", "make" and "pkg-config" and the following libraries:
+* libpng
+* libcairo2
+* libsdl2
+* libsdl2-image2
+
+Compile using "make" under Linux. For Windows, you can use "Msys2" and "make -f Makefile_win" but this version seemed to have some drawbacks while in "painting mode".
+
+On "Ubuntu 16.04" - you have to change the line number 650:
+
+sprintf(gameOptions->message, message);
+
+to
+
+sprintf(gameOptions->message, "%63s", message);
+
+This might be in reason of the gcc version on Ubuntu 16.04 LTS.
+
 
 ## Welcome to Conway's Game of life ##
 
@@ -45,29 +64,70 @@ If you hover over the corresponding bar, you see the exact cells highlighted.
 And there counts are always displayed on the bars.
 
 ### AVAILABLE COMMANDS
--h				This help
--c5 ... 250			Amount of cells in x and y by one number from 5 to 250 (default: 50)
--ct0.0 ... 1.0			Floating point value 0.5 for 50 percent color threshold (default: 0.85)
-				(rgb added together and averaged) for living cell image generation, below the set value
--mfc0.0 ... 1.0			Maximum fit cells for random number generator (default 0.4)
+* -h
+This help
+* -c5 ... 250
+
+Amount of cells in x and y by one number from 5 to 250 (default: 50)
+
+* -ct0.0 ... 1.0
+
+Floating point value 0.5 for 50 percent color threshold (default: 0.85) (rgb added together and averaged) for living cell image generation, below the set value
+
+*-mfc0.0 ... 1.0
+
+Maximum fit cells for random number generator (default 0.4)
 
 Start options of boolean type either 0/1 or t/f AND (also in game options/keybindings):
 
--gBOOL	+[KEY]			Grid enabled (t)rue or 1 or disabled (f)alse or 0 - ("g" key in game)
--aBOOL	+[KEY]			Animations enabled or disabled ("a" key in game to toggle)
--htBOOL	+[KEY]			History enabled or disabled (Toggled using "h" key in game)
--iBOOL	+[KEY]			Draw infopanel when history is enabled and one turn is processed (Toggled with "i" key)
--r	+[KEY]			Should the game start with a random playboard, be regenerated with a
-				random playboard ("r" key in game)
+* -gBOOL +[KEY]
 
--cb				Should cairo's png functions be used instead of libpng to save images
-				Cairo backend images cannot be imported directly! Please read the help for more information.
+Grid enabled (t)rue or 1 or disabled (f)alse or 0 - ("g" key in game)
 
-[KEY] "s"			Saves the actual scene, including the info panel if displayed ("s" key in game)
-[KEY] "+" (not numpad)		Decrease game ticks and increase game speed ("+" key in game)
-[KEY] ","			Go back in history, if enabled ("," key in game)
-[KEY] "."			Go forward in history, if enabled ("." key in game)
-[KEY] "c"			Clear game board ("c" key in game)
-[KEY] "p"			Paint mode ("p" key in game)
-[KEY] "Space"			Play/Pause the game ("space" key in game)
+* -aBOOL +[KEY\
 
+Animations enabled or disabled ("a" key in game to toggle)
+
+* -htBOOL +[KEY]
+
+History enabled or disabled (Toggled using "h" key in game)
+
+* -iBOOL +[KEY]
+
+Draw infopanel when history is enabled and one turn is processed (Toggled with "i" key)
+
+* -r +[KEY]
+
+Should the game start with a random playboard, be regenerated with a random playboard ("r" key in game)
+
+* -cb
+
+Should cairo's png functions be used instead of libpng to save images Cairo backend images cannot be imported directly! Please read the help for more information.
+
+* [KEY] "s"
+
+Saves the actual scene, including the info panel if displayed ("s" key in game)
+
+* [KEY] "+" (not numpad)
+
+Decrease game ticks and increase game speed ("+" key in game)
+
+* [KEY] ","
+
+Go back in history, if enabled ("," key in game)
+
+* [KEY] "."
+
+Go forward in history, if enabled ("." key in game)
+
+* [KEY] "c"
+
+Clear game board ("c" key in game)
+
+* [KEY] "p"
+
+Paint mode ("p" key in game)
+
+* [KEY] "Space"
+
+Play/Pause the game ("space" key in game)
