@@ -1,22 +1,24 @@
 # cgol
 A Conway game of life simulator
 
+Video demo: [cgol - feature video demo](https://dwrox.net/conway_preview.webm)
+
 ## Compilation
-Requirements for compilation are "gcc", "make" and "pkg-config" and the following libraries:
+Requirements for compilation are `gcc`, `make` and `pkg-config` and the following libraries:
 * libpng
 * libcairo2
 * libsdl2
 * libsdl2-image2
 
-Compile using "make" under Linux. For Windows, you can use "Msys2" and "make -f Makefile_win" but this version seemed to have some drawbacks while in "painting mode".
+Compile using `make` under Linux. For Windows, you can use `Msys2` and `make -f Makefile_win` but this version seemed to have some drawbacks while in "painting mode".
 
 On "Ubuntu 16.04" - you have to change the line number 650:
 
-sprintf(gameOptions->message, message);
+`sprintf(gameOptions->message, message);`
 
 to
 
-sprintf(gameOptions->message, "%63s", message);
+`sprintf(gameOptions->message, "%63s", message);`
 
 This might be in reason of the gcc version on Ubuntu 16.04 LTS.
 
@@ -26,7 +28,7 @@ This might be in reason of the gcc version on Ubuntu 16.04 LTS.
 This is a competition entry for the IT-Talents.de coding competition.
 By Jan R. - Version date: September 25th 2017.
 
-Enter "cgol -h" to show the help.
+Enter `cgol -h` to show the help which is much recommended
 
 
 ### GENERAL HELP
@@ -38,18 +40,18 @@ this will generate a cell map varying from the image.
 
 Images should be equal in there dimensions in order to reach the best effect.
 For example a one by one ratio, divisble by the cells in x and y to the image pixel dimensions.
-For generation you could use The Gimp or save out images from the game using "s" key.
+For generation you could use TheGimp or save out images from the game using `s` key.
 Example images are incuded which are all consisting of 32bit PNG images with alpha.
 
 ### SAVING IMAGES AND DRAG AND DROP
 
-If you want to save an image, you can do so by pressing "s" key.
-It is then saved to the folder "saved_images/TIMESTAMP.png".
+If you want to save an image, you can do so by pressing `s` key.
+It is then saved to the folder `saved_images/TIMESTAMP.png`.
 The routine saves everything except the grid and the message displayed inside the game window.
 Those images can be reimported into the application, like other images, by drag and drop.
 
-Note that CAIRO backend png's, switch "-cb", cannot directly be imported as they are missing the alpha channel.
-You have to use The Gimp or similiar to add an alpha channel, then import is working!
+Note that CAIRO backend png's, switch `-cb`, cannot directly be imported as they are missing the alpha channel.
+You have to use TheGimp or similiar to add an alpha channel, then import is working!
 
 ### INFO PANEL USAGE
 
@@ -64,70 +66,38 @@ If you hover over the corresponding bar, you see the exact cells highlighted.
 And there counts are always displayed on the bars.
 
 ### AVAILABLE COMMANDS
-* -h
-This help
-* -c5 ... 250
+`-h`: This help
 
-Amount of cells in x and y by one number from 5 to 250 (default: 50)
+`-c5 ... 250`: Amount of cells in x and y by one number from 5 to 250 (default: 50)
 
-* -ct0.0 ... 1.0
+`-ct0.0 ... 1.0`: Floating point value 0.5 for 50 percent color threshold (default: 0.85) (rgb added together and averaged) for living cell image generation, below the set value
 
-Floating point value 0.5 for 50 percent color threshold (default: 0.85) (rgb added together and averaged) for living cell image generation, below the set value
-
-*-mfc0.0 ... 1.0
-
-Maximum fit cells for random number generator (default 0.4)
+`-mfc0.0 ... 1.0`: Maximum fit cells for random number generator (default 0.4)
 
 Start options of boolean type either 0/1 or t/f AND (also in game options/keybindings):
 
-* -gBOOL +[KEY]
+`-gBOOL` +[KEY]: Grid enabled (t)rue or 1 or disabled (f)alse or 0 - (`g key` in game)
 
-Grid enabled (t)rue or 1 or disabled (f)alse or 0 - ("g" key in game)
+`-aBOOL` +[KEY]: Animations enabled or disabled (`a key` in game to toggle)
 
-* -aBOOL +[KEY\
+`-htBOOL` +[KEY]: History enabled or disabled (Toggled using `h key` in game)
 
-Animations enabled or disabled ("a" key in game to toggle)
+`-iBOOL +[KEY]`: Draw infopanel when history is enabled and one turn is processed (Toggled with `i key`)
 
-* -htBOOL +[KEY]
+`-r +[KEY]`: Should the game start with a random playboard, be regenerated with a random playboard (`r key` in game)
 
-History enabled or disabled (Toggled using "h" key in game)
+`-cb`: Should cairo's png functions be used instead of libpng to save images Cairo backend images cannot be imported directly! Please read the help for more information.
 
-* -iBOOL +[KEY]
+[KEY] `s`: Saves the actual scene, including the info panel if displayed ("s" key in game)
 
-Draw infopanel when history is enabled and one turn is processed (Toggled with "i" key)
+[KEY] `+` (not numpad): Decrease game ticks and increase game speed (`+ key` in game)
 
-* -r +[KEY]
+[KEY] `,`: Go back in history, if enabled (`, key` in game)
 
-Should the game start with a random playboard, be regenerated with a random playboard ("r" key in game)
+[KEY] `.`: Go forward in history, if enabled (`. key` in game)
 
-* -cb
+[KEY] `c`: Clear game board (`c key` in game)
 
-Should cairo's png functions be used instead of libpng to save images Cairo backend images cannot be imported directly! Please read the help for more information.
+[KEY] `p`: Paint mode (`p key` in game)
 
-* [KEY] "s"
-
-Saves the actual scene, including the info panel if displayed ("s" key in game)
-
-* [KEY] "+" (not numpad)
-
-Decrease game ticks and increase game speed ("+" key in game)
-
-* [KEY] ","
-
-Go back in history, if enabled ("," key in game)
-
-* [KEY] "."
-
-Go forward in history, if enabled ("." key in game)
-
-* [KEY] "c"
-
-Clear game board ("c" key in game)
-
-* [KEY] "p"
-
-Paint mode ("p" key in game)
-
-* [KEY] "Space"
-
-Play/Pause the game ("space" key in game)
+[KEY] `Space` :Play/Pause the game (`space key` in game)
