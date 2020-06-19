@@ -76,15 +76,15 @@ And there counts are always displayed on the bars.
 
 Start options of boolean type either 0/1 or t/f AND (also in game options/keybindings):
 
-`-gBOOL` +[KEY]: Grid enabled (t)rue or 1 or disabled (f)alse or 0 - (`g key` in game)
+`-gBOOL` or [KEY]: Grid enabled (t)rue or 1 or disabled (f)alse or 0 - (`g key` in game)
 
-`-aBOOL` +[KEY]: Animations enabled or disabled (`a key` in game to toggle)
+`-aBOOL` or [KEY]: Animations enabled or disabled (`a key` in game to toggle)
 
-`-htBOOL` +[KEY]: History enabled or disabled (Toggled using `h key` in game)
+`-htBOOL` or [KEY]: History enabled or disabled (Toggled using `h key` in game)
 
-`-iBOOL +[KEY]`: Draw infopanel when history is enabled and one turn is processed (Toggled with `i key`)
+`-iBOOL` or [KEY]: Draw infopanel when history is enabled and one turn is processed (Toggled with `i key`)
 
-`-r +[KEY]`: Should the game start with a random playboard, be regenerated with a random playboard (`r key` in game)
+`-r` or [KEY]: Should the game start with a random playboard, be regenerated with a random playboard (`r key` in game)
 
 `-cb`: Should cairo's png functions be used instead of libpng to save images Cairo backend images cannot be imported directly! Please read the help for more information.
 
